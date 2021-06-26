@@ -8,3 +8,7 @@ app.listen( port, () =>{
     console.log(`listening on port ${PORT}`)
 });
 
+function getCalculation(){
+    let calculation = [];
+    
+}
