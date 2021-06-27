@@ -77,15 +77,16 @@ function clearInputs(){
 function showHistory(response){
     $.ajax({
         type: 'GET',
-        url: "/calculations/history"
+        url: "/history"
     }).then (function(res){
         $('#calcHistory').empty();
         console.log('Response is', res)
         for( let i=0; i < res.length ; i++){
-            let problemHistory= res[i];
             $('#calcHistory').append(`
-            <li> ${problemHistory.number1} ${problemHistory.operator} ${problemHistory.number2} = ${problemHistory.answer}</li>
+            <li> ${res.numberOne} ${res.operator} ${res.numberTwo} = ${res.answer}</li>
             `);
         }
-    });
+    }).catch ( function (err){
+        console.log ('Error in sending??', err);
+    })
 }
