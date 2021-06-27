@@ -31,11 +31,11 @@ function multiplyBtn(){
     operator= '*';
 }
 
-let numberOne =$('#numberOne').val();
-let numberTwo= $('#numberTwo').val();
+
 
 function createEquation(){
-    console.log('in createEquation... to be sent to server', operator);
+    let numberOne =$('#numberOne').val();
+    let numberTwo= $('#numberTwo').val();
     if(operator=== ""){
         alert('Please choose an operator button.');
     } else if($('#numberOne').val()=== "" || $('#numberTwo').val()=== ""){
@@ -57,7 +57,7 @@ function createEquation(){
     }
     //create string and send it to server
     
-    // console.log('objects', equationObj);
+    console.log('in createEquation... to be sent to server', numberOne, operator, numberTwo);
 }
 
 

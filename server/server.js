@@ -33,6 +33,8 @@ app.post('/calculations', (req,res)=>{
         answer = Number(numberOne) * Number(numberTwo)
     }
 
+    pastCalculations.push(calculation);
+
     res.sendStatus(201); //server is good!
 
 });
