@@ -52,8 +52,12 @@ function createEquation(){
                 operator
 
             } 
-
-        });
+        }) .then( function ( res ){
+            showHistory();
+            clearInputs();
+        }).catch ( function (err){
+            console.log ('Error in sending??', err);
+        })
     }
     //create string and send it to server
     
@@ -70,20 +74,18 @@ function clearInputs(){
 
 
 
-
-
-// function showHistory(response){
-//     $.ajax({
-//         type: 'GET',
-//         url: "/calculations"
-//     }).then (function(res){
-//         let showEquation=0;
-//         console.log('Response is', res)
-//         for( let i=0; i < res.length ; i++){
-//             let problem= res[i];
-//             $('#calcHistory').append(`
-//             <li> ${problem.number1} ${problem.operator} ${problem.number2} = ${problem.answer}</li>
-//             `);
-//         }
-//     });
-// }
+function showHistory(response){
+    $.ajax({
+        type: 'GET',
+        url: "/calculations/history"
+    }).then (function(res){
+        $('#calcHistory').empty();
+        console.log('Response is', res)
+        for( let i=0; i < res.length ; i++){
+            let problemHistory= res[i];
+            $('#calcHistory').append(`
+            <li> ${problemHistory.number1} ${problemHistory.operator} ${problemHistory.number2} = ${problemHistory.answer}</li>
+            `);
+        }
+    });
+}
