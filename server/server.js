@@ -39,7 +39,12 @@ app.post('/calculations', (req,res)=>{
 
 });
 
-app.post('/history', (res)=>{
+app.get('/history', function (req, res){
     res.send(pastCalculations[ pastCalculations.length -1]);
+
+})
+
+app.get('/calculation', function (req, res){
+    res.send(pastCalculations);
 
 })

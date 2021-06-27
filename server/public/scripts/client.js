@@ -41,7 +41,7 @@ function createEquation(){
     } else if($('#numberOne').val()=== "" || $('#numberTwo').val()=== ""){
         alert ('Please enter a number in missing fields.');
     } else {
-        //sending 
+        //sending objects to server on /calculations
         $.ajax({
             type:"POST",
             url: "/calculations",
@@ -53,10 +53,11 @@ function createEquation(){
 
             } 
         }) .then( function ( res ){
-            showHistory();
             clearInputs();
+            showSolution();
+            showHistory();
         }).catch ( function (err){
-            console.log ('Error in sending??', err);
+            console.log ('Error in sending equation', err);
         })
     }
     //create string and send it to server
@@ -66,27 +67,41 @@ function createEquation(){
 
 
 function clearInputs(){
-    $('#numberOne').val();
-    $('#numberTwo').val();
+    console.log('inputs have been cleared');
+    $('#numberOne').val('');
+    $('#numberTwo').val('');
     operator='';
 }
 
 
 
 
-function showHistory(response){
+function showSolution(){
     $.ajax({
         type: 'GET',
         url: "/history"
     }).then (function(res){
-        $('#calcHistory').empty();
+        $('#solution').empty();
+        $('#solution').append(res.answer);
         console.log('Response is', res)
-        for( let i=0; i < res.length ; i++){
+    }).catch ( function (err){
+        console.log ('Error in sending answer', err);
+    })
+}
+
+
+function showHistory(){
+    $.ajax({
+        type: 'GET',
+        url: "/calculation"
+    }).then (function(res){
+        for( let item of res){
             $('#calcHistory').append(`
-            <li> ${res.numberOne} ${res.operator} ${res.numberTwo} = ${res.answer}</li>
+            <li> ${item.numberOne} ${item.operator} ${item.numberTwo} = ${item.answer}</li>
             `);
         }
+        console.log('History response is', res)
     }).catch ( function (err){
-        console.log ('Error in sending??', err);
+        console.log ('Error in sending answer', err);
     })
 }
