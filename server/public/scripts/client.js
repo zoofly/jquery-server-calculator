@@ -10,16 +10,24 @@ function onReady(){
     })
 }
 
-function Equation(firstNumber, secondNumber, operatorComp){
-    this.numbOne= firstNumber
-    this.numbTwo= secondNumber
-    this.operator= operatorComp
+function equation(){
+    let firstNumber= $('#numberOne').val();
+    let secondNumber=$('#secondNumber').val()
+    //create string 
+    let equationObj={
+        number1: firstNumber,
+        number2: secondNumber,
+        operator: operator
+    }  
     $.ajax({
-        type: 'GET',
+        type: 'POST',
         url:'/calculations',
-        data: 
+        data: equationObj
+    }) .then(
+        
+        res.send()
 
-    })
+   
 }
 
 
