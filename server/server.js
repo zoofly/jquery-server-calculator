@@ -12,38 +12,27 @@ app.listen( PORT, () =>{
 });
 
 
-// app.get('/history', (req,res)=>{
-//     console.log('History of calculations');
-//     res.send(pastCalculations)
-// });
+
 
 
 let pastCalculations = [];
 
 app.post('/calculations', (req,res)=>{
     console.log('POST /calculations', req.body);
-  
     
-    switch (operator) {
-        case '+':
-            answer= Number(numberOne)+ Number(numberTwo)
-            
-            break;
+    //compute string of objects into equation to be carried out
+    let calculation = req.body;
 
-        case '-':
-            answer= Number(numberOne)- Number(numberTwo)
-             break;
-
-         case '/':
-            answer= Number(numberOne)/ Number(numberTwo)
-            break;
-        case '*':
-            answer= Number(numberOne)* Number(numberTwo)
-            break;
-    
-        }
+    if(operator === '+'){
+        answer = Number(numberOne) + Number(numberTwo)
+    } else if (operator === '-'){
+        answer = Number(numberOne) - Number(numberTwo)
+    } else if (operator === '/'){
+        answer = Number(numberOne) / Number(numberTwo)
+    } else if (operator === '*'){
+        answer = Number(numberOne) * Number(numberTwo)
     }
 
     res.sendStatus(201); //server is good!
 
-  );
+});
