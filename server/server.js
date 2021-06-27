@@ -18,7 +18,7 @@ app.listen( PORT, () =>{
 // });
 
 
-let pastCalculations = [];
+// let pastCalculations = [];
 
 app.post('/calculations', (req,res)=>{
     console.log('POST /calculations', req.body);
