@@ -12,38 +12,44 @@ app.listen( PORT, () =>{
 });
 
 
-app.get('/history', (req,res)=>{
-    console.log('History of calculations');
-    res.send(pastCalculations)
-});
-121
+// app.get('/history', (req,res)=>{
+//     console.log('History of calculations');
+//     res.send(pastCalculations)
+// });
+
+
 let pastCalculations = [];
-app.get('/calculations', (req,res)=>{
-    let firstNumber= req.body.firstNumber;
-    let secondNumber= req.body.secondNumber;
-    let operator = req.body.operator;
-    function getCalculation(equation){
-    switch (operator) {
-        case '+':
-            answer= Number(firstNumber)+ Number(secondNumber)
+
+app.post('/calculations', (req,res)=>{
+    console.log('POST /calculations', req.body);
+    res.sendStatus(201)
+
+    });
+    // let firstNumber= req.body.firstNumber;
+    // let secondNumber= req.body.secondNumber;
+    // let operator = req.body.operator;
+    // function getCalculation(equation){
+    // switch (operator) {
+    //     case '+':
+    //         answer= Number(firstNumber)+ Number(secondNumber)
             
-            break;
+    //         break;
 
-        case '-':
-            answer= Number(firstNumber)- Number(secondNumber)
-             break;
+    //     case '-':
+    //         answer= Number(firstNumber)- Number(secondNumber)
+    //          break;
 
-         case '/':
-            answer= Number(firstNumber)/ Number(secondNumber)
-            break;
-        case '*':
-            answer= Number(firstNumber)* Number(secondNumber)
-            break;
+    //      case '/':
+    //         answer= Number(firstNumber)/ Number(secondNumber)
+    //         break;
+    //     case '*':
+    //         answer= Number(firstNumber)* Number(secondNumber)
+    //         break;
     
-        default: null;
-            break;
-        }
-    }
-    pastCalculations.push(equationObj);
-    res.send(equationObj);
-});
+    //     default: null;
+    //         break;
+    //     }
+    // }
+    // pastCalculations.push(equationObj);
+    // res.send(equationObj);
+
