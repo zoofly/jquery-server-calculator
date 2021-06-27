@@ -18,38 +18,32 @@ app.listen( PORT, () =>{
 // });
 
 
-// let pastCalculations = [];
+let pastCalculations = [];
 
 app.post('/calculations', (req,res)=>{
     console.log('POST /calculations', req.body);
-    res.sendStatus(201)
-
-    });
-    // let firstNumber= req.body.firstNumber;
-    // let secondNumber= req.body.secondNumber;
-    // let operator = req.body.operator;
-    // function getCalculation(equation){
-    // switch (operator) {
-    //     case '+':
-    //         answer= Number(firstNumber)+ Number(secondNumber)
-            
-    //         break;
-
-    //     case '-':
-    //         answer= Number(firstNumber)- Number(secondNumber)
-    //          break;
-
-    //      case '/':
-    //         answer= Number(firstNumber)/ Number(secondNumber)
-    //         break;
-    //     case '*':
-    //         answer= Number(firstNumber)* Number(secondNumber)
-    //         break;
+  
     
-    //     default: null;
-    //         break;
-    //     }
-    // }
-    // pastCalculations.push(equationObj);
-    // res.send(equationObj);
+    switch (operator) {
+        case '+':
+            answer= Number(numberOne)+ Number(numberTwo)
+            
+            break;
 
+        case '-':
+            answer= Number(numberOne)- Number(numberTwo)
+             break;
+
+         case '/':
+            answer= Number(numberOne)/ Number(numberTwo)
+            break;
+        case '*':
+            answer= Number(numberOne)* Number(numberTwo)
+            break;
+    
+        }
+    }
+
+    res.sendStatus(201); //server is good!
+
+  );
