@@ -44,7 +44,7 @@ function createEquation(){
         //sending objects to server on /calculations
         $.ajax({
             type:"POST",
-            url: "/calculations",
+            url: "/calculation",
             data:{
                 
                 numberOne,

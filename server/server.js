@@ -17,7 +17,7 @@ app.listen( PORT, () =>{
 
 let pastCalculations = [];
 
-app.post('/calculations', (req,res)=>{
+app.post('/calculation', (req,res)=>{
     console.log('POST /calculations', req.body);
     
     //compute string of objects into equation to be carried out
